@@ -14,34 +14,34 @@ class Day2Test {
     private val day2 = Day2()
 
     @Test
-    internal fun `checksum with empty spreadsheet throws IllegalArgumentException`() {
+    internal fun `checksumUsingMinAndMax with empty spreadsheet throws IllegalArgumentException`() {
         Assertions.assertThrows(IllegalArgumentException::class.java) {
-            day2.checksum(ArrayList())
+            day2.checksumUsingMinAndMax(ArrayList())
         }
     }
 
     @Test
-    internal fun `checksum with spreadsheet containing empty row throws IllegalArgumentException`() {
+    internal fun `checksumUsingMinAndMax with spreadsheet containing empty row throws IllegalArgumentException`() {
         Assertions.assertThrows(IllegalArgumentException::class.java) {
             val spreadsheet = ArrayList<IntArray>()
             spreadsheet.add(intArrayOf(5, 1, 9, 5))
             spreadsheet.add(intArrayOf())
             spreadsheet.add(intArrayOf(2, 4, 6, 8))
-            day2.checksum(ArrayList())
+            day2.checksumUsingMinAndMax(ArrayList())
         }
     }
 
     @Test
-    internal fun `checksum using puzzle example spreadsheet`() {
+    internal fun `checksumUsingMinAndMax using puzzle example spreadsheet`() {
         val spreadsheet = ArrayList<IntArray>()
         spreadsheet.add(intArrayOf(5, 1, 9, 5))
         spreadsheet.add(intArrayOf(7, 5, 3))
         spreadsheet.add(intArrayOf(2, 4, 6, 8))
-        Assertions.assertEquals(18, day2.checksum(spreadsheet))
+        Assertions.assertEquals(18, day2.checksumUsingMinAndMax(spreadsheet))
     }
 
     @Test
-    internal fun `checksum using puzzle input`() {
+    internal fun `checksumUsingMinAndMax using puzzle input`() {
         val spreadsheet = ArrayList<IntArray>()
         spreadsheet.add(intArrayOf(1919, 2959, 82, 507, 3219, 239, 3494, 1440, 3107, 259, 3544, 683, 207, 562, 276, 2963))
         spreadsheet.add(intArrayOf(587, 878, 229, 2465, 2575, 1367, 2017, 154, 152, 157, 2420, 2480, 138, 2512, 2605, 876))
@@ -59,6 +59,6 @@ class Day2Test {
         spreadsheet.add(intArrayOf(1240, 45, 254, 1008, 1186, 306, 633, 1232, 1457, 808, 248, 1166, 775, 1418, 1175, 287))
         spreadsheet.add(intArrayOf(851, 132, 939, 1563, 539, 1351, 1147, 117, 1484, 100, 123, 490, 152, 798, 1476, 543))
         spreadsheet.add(intArrayOf(1158, 2832, 697, 113, 121, 397, 1508, 118, 2181, 2122, 809, 2917, 134, 2824, 3154, 2791))
-        Assertions.assertEquals(53978, day2.checksum(spreadsheet))
+        Assertions.assertEquals(53978, day2.checksumUsingMinAndMax(spreadsheet))
     }
 }

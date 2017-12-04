@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
 }
 
 class Day2 {
-    fun checksum(spreadsheet: ArrayList<IntArray>): Long {
+    fun checksumUsingMinAndMax(spreadsheet: ArrayList<IntArray>): Long {
         var checksum = 0L
 
         if (spreadsheet.isEmpty()) {
