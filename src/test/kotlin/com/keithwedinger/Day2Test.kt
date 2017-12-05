@@ -70,4 +70,36 @@ class Day2Test {
     internal fun `checksumUsingMinAndMax using puzzle input`() {
         Assertions.assertEquals(53978, day2.checksumUsingMinAndMax(Day2Test.puzzleInput))
     }
+
+    @Test
+    internal fun `checksumUsingEvenlyDivisible with empty spreadsheet throws IllegalArgumentException`() {
+        Assertions.assertThrows(IllegalArgumentException::class.java) {
+            day2.checksumUsingEvenlyDivisible(ArrayList())
+        }
+    }
+
+    @Test
+    internal fun `checksumUsingEvenlyDivisible with spreadsheet containing empty row throws IllegalArgumentException`() {
+        Assertions.assertThrows(IllegalArgumentException::class.java) {
+            val spreadsheet = ArrayList<IntArray>()
+            spreadsheet.add(intArrayOf(5, 1, 9, 5))
+            spreadsheet.add(intArrayOf())
+            spreadsheet.add(intArrayOf(2, 4, 6, 8))
+            day2.checksumUsingEvenlyDivisible(ArrayList())
+        }
+    }
+
+    @Test
+    internal fun `checksumUsingEvenlyDivisible using puzzle example spreadsheet`() {
+        val spreadsheet = ArrayList<IntArray>()
+        spreadsheet.add(intArrayOf(5, 9, 2, 8))
+        spreadsheet.add(intArrayOf(9, 4, 7, 3))
+        spreadsheet.add(intArrayOf(3, 8, 6, 5))
+        Assertions.assertEquals(9, day2.checksumUsingEvenlyDivisible(spreadsheet))
+    }
+
+    @Test
+    internal fun `checksumUsingEvenlyDivisible using puzzle input`() {
+        Assertions.assertEquals(314, day2.checksumUsingEvenlyDivisible(Day2Test.puzzleInput))
+    }
 }
