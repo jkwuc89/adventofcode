@@ -1,7 +1,8 @@
 package com.keithwedinger
 
 /**
- * Day 1 Puzzle
+ * Day 2 Puzzle
+ * http://adventofcode.com/2017/day/2
  *
  * @author Keith Wedinger <br>
  * Created On: 12/4/17

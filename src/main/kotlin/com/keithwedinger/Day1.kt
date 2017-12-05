@@ -5,6 +5,7 @@ import java.lang.Character.getNumericValue
 
 /**
  * Day 1 Puzzle
+ * http://adventofcode.com/2017/day/1
  *
  * @author Keith Wedinger <br>
  * Created On: 12/1/17
