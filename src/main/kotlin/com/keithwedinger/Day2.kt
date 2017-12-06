@@ -7,11 +7,6 @@ package com.keithwedinger
  * @author Keith Wedinger <br>
  * Created On: 12/4/17
  */
-
-fun main(args: Array<String>) {
-
-}
-
 class Day2 {
     fun checksumUsingMinAndMax(spreadsheet: ArrayList<IntArray>): Long {
         var checksum = 0L

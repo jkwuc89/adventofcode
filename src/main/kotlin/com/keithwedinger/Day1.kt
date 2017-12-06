@@ -10,12 +10,6 @@ import java.lang.Character.getNumericValue
  * @author Keith Wedinger <br>
  * Created On: 12/1/17
  */
-fun main(args: Array<String>) {
-    val day1 = Day1()
-    println("sumUsingNextDigit = " + day1.sumUsingNextDigit("1122"))
-    println("sumUsingDigitHalfwayForward = " + day1.sumUsingDigitHalfwayForward("1212"))
-}
-
 class Day1 {
     fun sumUsingNextDigit(input: String): Long {
         if (input.isEmpty() || !StringUtils.isNumeric(input)) {
