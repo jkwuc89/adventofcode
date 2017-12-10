@@ -28,4 +28,18 @@ class Day3Test {
         Assertions.assertEquals(31, day3.getSpiralMemoryAccessSteps(1024))
         Assertions.assertEquals(480, day3.getSpiralMemoryAccessSteps(347991))
     }
+
+    @Test
+    internal fun `getNextLargerValue with 0 throws IllegalArgumentException`() {
+        Assertions.assertThrows(IllegalArgumentException::class.java) {
+            day3.getNextLargerValue(0)
+        }
+    }
+
+    @Test
+    internal fun `getNextLargerValue with puzzle example inputs`() {
+        Assertions.assertEquals(1, day3.getNextLargerValue(1))
+        Assertions.assertEquals(10, day3.getNextLargerValue(147))
+        Assertions.assertEquals(349975, day3.getNextLargerValue(347991))
+    }
 }

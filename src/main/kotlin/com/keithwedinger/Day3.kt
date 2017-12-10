@@ -36,4 +36,76 @@ class Day3 {
         }
         return distance
     }
+
+    private enum class Direction {
+        NORTH, SOUTH, EAST, WEST
+    }
+
+    private class Location(internal var x: Int, internal var y: Int) {
+        override fun toString(): String {
+            return x.toString() + "," + y
+        }
+    }
+
+    private fun getValue(map: HashMap<String, Int>, x: Int, y: Int): Int {
+        var value = 0
+        val location = Location(x, y)
+        if (map.containsKey(location.toString())) {
+            value = map[location.toString()]!!
+        }
+        return value
+    }
+
+    // val input = 347991
+
+    fun getNextLargerValue(input: Int) : Int {
+        if (input == 0) throw IllegalArgumentException("0 is invalid input")
+        
+        var x = 0
+        var y = 0
+        var layerSteps = 1
+        var newLayer: Boolean? = true
+        var direction = Direction.EAST
+        val valueMap = HashMap<String, Int>()
+        valueMap.put(Location(0, 0).toString(), 1)
+        while (true) {
+            var j = 0
+            while (j < layerSteps) {
+                when (direction) {
+                    Direction.NORTH -> y += 1
+                    Direction.SOUTH -> y -= 1
+                    Direction.EAST -> x += 1
+                    Direction.WEST -> x -= 1
+                }
+
+                var value = 0
+
+                value += getValue(valueMap, x, y + 1)
+                value += getValue(valueMap, x, y - 1)
+                value += getValue(valueMap, x + 1, y)
+                value += getValue(valueMap, x + 1, y + 1)
+                value += getValue(valueMap, x + 1, y - 1)
+                value += getValue(valueMap, x - 1, y)
+                value += getValue(valueMap, x - 1, y + 1)
+                value += getValue(valueMap, x - 1, y - 1)
+
+                if (value >= input) {
+                    return value
+                } else {
+                    valueMap.put(Location(x, y).toString(), value)
+                }
+                j += 1
+            }
+            direction = when (direction) {
+                Direction.NORTH -> Direction.WEST
+                Direction.SOUTH -> Direction.EAST
+                Direction.EAST -> Direction.NORTH
+                Direction.WEST -> Direction.SOUTH
+            }
+            newLayer = (newLayer!!.not())
+            if (newLayer) {
+                layerSteps += 1
+            }
+        }
+    }
 }
