@@ -36,4 +36,19 @@ class Day4Test {
         val testInputStream = this.javaClass.getResourceAsStream("/Day4Part1PassphraseInput.txt")
         Assertions.assertEquals(325, day4.countValidPassphrases(testInputStream))
     }
+
+    @Test
+    internal fun `isAnagramOf with words of different lengths returns false`() {
+        Assertions.assertFalse("abc".isAnagramOf("abcd"))
+    }
+
+    @Test
+    internal fun `isAnagramOf with words of same length but different letters returns false`() {
+        Assertions.assertFalse("bca".isAnagramOf("cbd"))
+    }
+
+    @Test
+    internal fun `isAnagramOf with words of same length and same letters returns true`() {
+        Assertions.assertTrue("cbabc".isAnagramOf("abcbc"))
+    }
 }
