@@ -41,17 +41,10 @@ class Day3 {
         NORTH, SOUTH, EAST, WEST
     }
 
-    private class Location(internal var x: Int, internal var y: Int) {
-        override fun toString(): String {
-            return x.toString() + "," + y
-        }
-    }
-
-    private fun getValue(map: HashMap<String, Int>, x: Int, y: Int): Int {
+    private fun getValue(map: HashMap<Pair<Int, Int>, Int>, key: Pair<Int, Int>): Int {
         var value = 0
-        val location = Location(x, y)
-        if (map.containsKey(location.toString())) {
-            value = map[location.toString()]!!
+        if (map.containsKey(key)) {
+            value = map[key]!!
         }
         return value
     }
@@ -64,8 +57,8 @@ class Day3 {
         var layerSteps = 1
         var newLayer = true
         var direction = Direction.EAST
-        val valueMap = HashMap<String, Int>()
-        valueMap.put(Location(0, 0).toString(), 1)
+        val valueMap = HashMap<Pair<Int, Int>, Int>()
+        valueMap.put(Pair(0, 0), 1)
         while (true) {
             var j = 0
             while (j < layerSteps) {
@@ -78,19 +71,19 @@ class Day3 {
 
                 var nextLargerValue = 0
 
-                nextLargerValue += getValue(valueMap, x, y + 1)
-                nextLargerValue += getValue(valueMap, x, y - 1)
-                nextLargerValue += getValue(valueMap, x + 1, y)
-                nextLargerValue += getValue(valueMap, x + 1, y + 1)
-                nextLargerValue += getValue(valueMap, x + 1, y - 1)
-                nextLargerValue += getValue(valueMap, x - 1, y)
-                nextLargerValue += getValue(valueMap, x - 1, y + 1)
-                nextLargerValue += getValue(valueMap, x - 1, y - 1)
+                nextLargerValue += getValue(valueMap, Pair(x, y + 1))
+                nextLargerValue += getValue(valueMap, Pair(x, y - 1))
+                nextLargerValue += getValue(valueMap, Pair(x + 1, y))
+                nextLargerValue += getValue(valueMap, Pair(x + 1, y + 1))
+                nextLargerValue += getValue(valueMap, Pair(x + 1, y - 1))
+                nextLargerValue += getValue(valueMap, Pair(x - 1, y))
+                nextLargerValue += getValue(valueMap, Pair(x - 1, y + 1))
+                nextLargerValue += getValue(valueMap, Pair(x - 1, y - 1))
 
                 if (nextLargerValue > input) {
                     return nextLargerValue
                 } else {
-                    valueMap.put(Location(x, y).toString(), nextLargerValue)
+                    valueMap.put(Pair(x, y), nextLargerValue)
                 }
                 j++
             }
