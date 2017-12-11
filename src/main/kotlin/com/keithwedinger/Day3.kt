@@ -56,15 +56,13 @@ class Day3 {
         return value
     }
 
-    // val input = 347991
-
     fun getNextLargerValue(input: Int) : Int {
         if (input == 0) throw IllegalArgumentException("0 is invalid input")
         
         var x = 0
         var y = 0
         var layerSteps = 1
-        var newLayer: Boolean? = true
+        var newLayer = true
         var direction = Direction.EAST
         val valueMap = HashMap<String, Int>()
         valueMap.put(Location(0, 0).toString(), 1)
@@ -78,23 +76,23 @@ class Day3 {
                     Direction.WEST -> x -= 1
                 }
 
-                var value = 0
+                var nextLargerValue = 0
 
-                value += getValue(valueMap, x, y + 1)
-                value += getValue(valueMap, x, y - 1)
-                value += getValue(valueMap, x + 1, y)
-                value += getValue(valueMap, x + 1, y + 1)
-                value += getValue(valueMap, x + 1, y - 1)
-                value += getValue(valueMap, x - 1, y)
-                value += getValue(valueMap, x - 1, y + 1)
-                value += getValue(valueMap, x - 1, y - 1)
+                nextLargerValue += getValue(valueMap, x, y + 1)
+                nextLargerValue += getValue(valueMap, x, y - 1)
+                nextLargerValue += getValue(valueMap, x + 1, y)
+                nextLargerValue += getValue(valueMap, x + 1, y + 1)
+                nextLargerValue += getValue(valueMap, x + 1, y - 1)
+                nextLargerValue += getValue(valueMap, x - 1, y)
+                nextLargerValue += getValue(valueMap, x - 1, y + 1)
+                nextLargerValue += getValue(valueMap, x - 1, y - 1)
 
-                if (value > input) {
-                    return value
+                if (nextLargerValue > input) {
+                    return nextLargerValue
                 } else {
-                    valueMap.put(Location(x, y).toString(), value)
+                    valueMap.put(Location(x, y).toString(), nextLargerValue)
                 }
-                j += 1
+                j++
             }
             direction = when (direction) {
                 Direction.NORTH -> Direction.WEST
@@ -102,7 +100,7 @@ class Day3 {
                 Direction.EAST -> Direction.NORTH
                 Direction.WEST -> Direction.SOUTH
             }
-            newLayer = (newLayer!!.not())
+            newLayer = (newLayer.not())
             if (newLayer) {
                 layerSteps += 1
             }
