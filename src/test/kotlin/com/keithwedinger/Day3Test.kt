@@ -38,8 +38,10 @@ class Day3Test {
 
     @Test
     internal fun `getNextLargerValue with puzzle example inputs`() {
-        Assertions.assertEquals(1, day3.getNextLargerValue(1))
-        Assertions.assertEquals(10, day3.getNextLargerValue(147))
+        Assertions.assertEquals(2, day3.getNextLargerValue(1))
+        Assertions.assertEquals(4, day3.getNextLargerValue(2))
+        Assertions.assertEquals(26, day3.getNextLargerValue(25))
+        Assertions.assertEquals(304, day3.getNextLargerValue(147))
         Assertions.assertEquals(349975, day3.getNextLargerValue(347991))
     }
 }

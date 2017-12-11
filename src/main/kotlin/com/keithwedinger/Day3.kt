@@ -89,7 +89,7 @@ class Day3 {
                 value += getValue(valueMap, x - 1, y + 1)
                 value += getValue(valueMap, x - 1, y - 1)
 
-                if (value >= input) {
+                if (value > input) {
                     return value
                 } else {
                     valueMap.put(Location(x, y).toString(), value)
