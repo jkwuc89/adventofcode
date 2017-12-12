@@ -33,7 +33,7 @@ class Day4Test {
 
     @Test
     internal fun `isValidPassphrasePart1 with puzzle input from file`() {
-        val testInputStream = this.javaClass.getResourceAsStream("/Day4Part1PassphraseInput.txt")
+        val testInputStream = this.javaClass.getResourceAsStream("/Day4PuzzleInput.txt")
         Assertions.assertEquals(325, day4.countValidPassphrases(testInputStream, day4::isValidPassphrasePart1))
     }
 
@@ -50,5 +50,20 @@ class Day4Test {
     @Test
     internal fun `isAnagramOf with words of same length and same letters returns true`() {
         Assertions.assertTrue("cbabc".isAnagramOf("abcbc"))
+    }
+
+    @Test
+    internal fun `isValidPassphrasePart2 with sample passphrases from puzzle`() {
+        Assertions.assertTrue(day4.isValidPassphrasePart2("abcde fghij"))
+        Assertions.assertFalse(day4.isValidPassphrasePart2("abcde xyz ecdab"))
+        Assertions.assertTrue(day4.isValidPassphrasePart2("a ab abc abd abf abj"))
+        Assertions.assertTrue(day4.isValidPassphrasePart2("iiii oiii ooii oooi oooo"))
+        Assertions.assertFalse(day4.isValidPassphrasePart2("oiii ioii iioi iiio"))
+    }
+
+    @Test
+    internal fun `isValidPassphrasePart2 with puzzle input from file`() {
+        val testInputStream = this.javaClass.getResourceAsStream("/Day4PuzzleInput.txt")
+        Assertions.assertEquals(119, day4.countValidPassphrases(testInputStream, day4::isValidPassphrasePart2))
     }
 }

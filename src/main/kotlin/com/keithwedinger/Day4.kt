@@ -21,7 +21,7 @@ fun String.isAnagramOf(otherWord: String) : Boolean {
         sortedThisChars.sort()
         val sortedOtherWordChars = otherWord.toCharArray()
         sortedOtherWordChars.sort()
-        isAnagram = (sortedThisChars.contentToString() == sortedOtherWordChars.contentToString())
+        isAnagram = (sortedThisChars.joinToString("") == sortedOtherWordChars.joinToString(""))
     }
     return isAnagram
 }
@@ -35,6 +35,27 @@ class Day4 {
         } else {
             false
         }
+    }
+
+    fun isValidPassphrasePart2(passphrase: String) : Boolean {
+        val validPassphrase : Boolean
+        if (passphrase.isNotEmpty()) {
+            val passphraseWords = passphrase.split(" ")
+            validPassphrase = if (passphraseWords.isNotEmpty()) {
+                val passphraseWordsWithSortedChars = HashMap<String, Int>()
+                passphraseWords.forEach { currentWord ->
+                    val sortedWordChars = currentWord.toCharArray()
+                    sortedWordChars.sort()
+                    passphraseWordsWithSortedChars.put(sortedWordChars.joinToString(""), 0)
+                }
+                (passphraseWords.size == passphraseWordsWithSortedChars.size)
+            } else {
+                false
+            }
+        } else {
+            validPassphrase = false
+        }
+        return validPassphrase
     }
 
     fun countValidPassphrases(passphraseInputStream: InputStream, isValidPassphrase: (passphrase: String) -> Boolean) : Int {
