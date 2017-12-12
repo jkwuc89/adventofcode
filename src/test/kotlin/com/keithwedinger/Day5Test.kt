@@ -60,6 +60,7 @@ class Day5Test {
         -538, -696, -504, -238, -129, -408, -846, -880, -926, -808, -758, -990, -879, -888, -972, -948, -662, -90, -1014, -469, -405, -654, -743, -733
     )
 
+    // Part 1 tests
     @Test
     internal fun `traverseJumpMaze with sample maze from puzzle`() {
         Assertions.assertEquals(5, day5.traverseJumpMaze(arrayListOf(0, 3, 0, 1, -3)))
@@ -68,5 +69,16 @@ class Day5Test {
     @Test
     internal fun `traverseJumpMaze with puzzle input`() {
         Assertions.assertEquals(376976, day5.traverseJumpMaze(puzzleInput))
+    }
+
+    // Part 2 tests
+    @Test
+    internal fun `traverseJumpMaze using decrementOnLargeJump with sample maze from puzzle`() {
+        Assertions.assertEquals(10, day5.traverseJumpMaze(arrayListOf(0, 3, 0, 1, -3), true))
+    }
+
+    @Test
+    internal fun `traverseJumpMaze using decrementOnLargeJump with with puzzle input`() {
+        Assertions.assertEquals(29227751, day5.traverseJumpMaze(puzzleInput, true))
     }
 }

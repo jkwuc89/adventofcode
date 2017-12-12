@@ -9,7 +9,7 @@ package com.keithwedinger
  */
 
 class Day5 {
-    fun traverseJumpMaze(maze: ArrayList<Int>) : Int {
+    fun traverseJumpMaze(maze: ArrayList<Int>, decrementOnLargeJump: Boolean = false) : Int {
         var currentPosition = 0
         var newPosition = 0
         var exited = false
@@ -17,7 +17,10 @@ class Day5 {
 
         while(!exited) {
             newPosition = currentPosition + maze[currentPosition]
-            maze[currentPosition]++
+            if (decrementOnLargeJump && maze[currentPosition] >= 3)
+                maze[currentPosition]--
+            else
+                maze[currentPosition]++
             currentPosition = newPosition
             jumps++
             exited = (currentPosition < 0 || currentPosition >= maze.size)
