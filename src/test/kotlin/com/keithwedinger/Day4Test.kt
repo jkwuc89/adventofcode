@@ -28,13 +28,13 @@ class Day4Test {
     @Test
     internal fun `isValidPassphrasePart1 with sample passphrases from file`() {
         val testInputStream = this.javaClass.getResourceAsStream("/Day4Part1SamplePassphrases.txt")
-        Assertions.assertEquals(2, day4.countValidPassphrases(testInputStream))
+        Assertions.assertEquals(2, day4.countValidPassphrases(testInputStream, day4::isValidPassphrasePart1))
     }
 
     @Test
     internal fun `isValidPassphrasePart1 with puzzle input from file`() {
         val testInputStream = this.javaClass.getResourceAsStream("/Day4Part1PassphraseInput.txt")
-        Assertions.assertEquals(325, day4.countValidPassphrases(testInputStream))
+        Assertions.assertEquals(325, day4.countValidPassphrases(testInputStream, day4::isValidPassphrasePart1))
     }
 
     @Test

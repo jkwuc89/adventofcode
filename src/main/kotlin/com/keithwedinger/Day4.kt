@@ -37,11 +37,11 @@ class Day4 {
         }
     }
 
-    fun countValidPassphrases(passphraseInputStream: InputStream) : Int {
+    fun countValidPassphrases(passphraseInputStream: InputStream, isValidPassphrase: (passphrase: String) -> Boolean) : Int {
         var validPassphrases = 0
         passphraseInputStream.bufferedReader().useLines { passphrases ->
             passphrases.forEach { currentPassphrase ->
-                if (isValidPassphrasePart1(currentPassphrase)) validPassphrases++
+                if (isValidPassphrase(currentPassphrase)) validPassphrases++
             }
         }
         return validPassphrases
