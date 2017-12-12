@@ -11,7 +11,7 @@ package com.keithwedinger
 class Day5 {
     fun traverseJumpMaze(maze: ArrayList<Int>, decrementOnLargeJump: Boolean = false) : Int {
         var currentPosition = 0
-        var newPosition = 0
+        var newPosition: Int
         var exited = false
         var jumps = 0
 
