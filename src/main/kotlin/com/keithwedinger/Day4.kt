@@ -10,7 +10,7 @@ import java.io.InputStream
  * Created On: 12/11/17
  */
 
-// Extension function that determines if the String passed in is an anagram
+// String extension function that determines if the String passed in is an anagram
 // of the String instance
 fun String.isAnagramOf(otherWord: String) : Boolean {
     var isAnagram = false
