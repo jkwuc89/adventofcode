@@ -32,7 +32,6 @@ class Day6 {
     fun reallocateMemoryPart1(banks: ArrayList<Int>): Int {
         var cycles = 1
         var reallocationSeenBefore = false
-        // var reallocationSeenBeforeCount = 0
         val reallocationResults = HashMap<Int, Int>()
 
         while (!reallocationSeenBefore) {
