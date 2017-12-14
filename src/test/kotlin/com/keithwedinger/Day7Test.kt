@@ -15,13 +15,13 @@ class Day7Test {
 
     @Test
     internal fun `findBottomProgram with puzzle sample input`() {
-        val testInputStream = this.javaClass.getResourceAsStream("/Day7Part1SamplePuzzleInput.txt")
+        val testInputStream = this.javaClass.getResourceAsStream("/Day7SamplePuzzleInput.txt")
         Assertions.assertEquals("tknk", day7.findBottomProgram(testInputStream))
     }
 
     @Test
     internal fun `findBottomProgram with puzzle input`() {
-        val testInputStream = this.javaClass.getResourceAsStream("/Day7Part1PuzzleInput.txt")
+        val testInputStream = this.javaClass.getResourceAsStream("/Day7PuzzleInput.txt")
         Assertions.assertEquals("fbgguv", day7.findBottomProgram(testInputStream))
     }
 }
