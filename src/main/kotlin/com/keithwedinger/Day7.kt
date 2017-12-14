@@ -22,14 +22,14 @@ class Day7 {
         val programNames = HashMap<String, Boolean>()
         val programs = ArrayList<MatchGroupCollection>()
 
-        // Split stream input and split lines into individual fields using regex above
+        // Split stream input and split lines into program names and program fields
         programTowerInput.split("\n").forEach{
             val programFields = regex.matchEntire(it)!!.groups
             programNames.put(programFields[1]!!.value, true)
             programs.add(programFields)
         }
 
-        // If there are children, then delete those children from the map
+        // If there are children, then delete those children from the program names
         // as they obviously cannot be the root node (as they have a parent)
         programs.forEach{ programFields ->
             if (programFields[4] != null) {
