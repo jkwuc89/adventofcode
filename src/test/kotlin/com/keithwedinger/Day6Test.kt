@@ -23,4 +23,14 @@ class Day6Test {
     internal fun `reallocateMemoryPart1 with puzzle input`() {
         Assertions.assertEquals(4074, day6.reallocateMemoryPart1(puzzleInput))
     }
+
+    @Test
+    internal fun `reallocateMemoryPart2 with puzzle sample input`() {
+        Assertions.assertEquals(4, day6.reallocateMemoryPart2(arrayListOf(0, 2, 7, 0)))
+    }
+
+    @Test
+    internal fun `reallocateMemoryPart2 with puzzle input`() {
+        Assertions.assertEquals(2793, day6.reallocateMemoryPart2(puzzleInput))
+    }
 }
