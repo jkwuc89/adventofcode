@@ -11,7 +11,7 @@ import java.io.InputStream
  */
 
 class Day8 {
-    val utils = Utils()
+    private val utils = Utils()
     fun runProgramAndReturnLargestRegisterValue(program: InputStream): Int {
         val instructions = utils.readTestInput(program)
         val registers = HashMap<String, Int>()
