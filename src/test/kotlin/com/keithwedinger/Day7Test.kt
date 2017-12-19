@@ -24,4 +24,28 @@ class Day7Test {
         val testInputStream = this.javaClass.getResourceAsStream("/Day7PuzzleInput.txt")
         Assertions.assertEquals("fbgguv", day7.findBottomProgram(testInputStream))
     }
+
+    @Test
+    internal fun `solvePart1 with puzzle sample input`() {
+        val testInputStream = this.javaClass.getResourceAsStream("/Day7SamplePuzzleInput.txt")
+        Assertions.assertEquals("tknk", day7.solvePart1(testInputStream))
+    }
+
+    @Test
+    internal fun `solvePart1 with puzzle input`() {
+        val testInputStream = this.javaClass.getResourceAsStream("/Day7PuzzleInput.txt")
+        Assertions.assertEquals("fbgguv", day7.solvePart1(testInputStream))
+    }
+
+    @Test
+    internal fun `solvePart2 with puzzle sample input`() {
+        val testInputStream = this.javaClass.getResourceAsStream("/Day7SamplePuzzleInput.txt")
+        Assertions.assertEquals(60, day7.solvePart2(testInputStream))
+    }
+
+    @Test
+    internal fun `solvePart2 with puzzle input`() {
+        val testInputStream = this.javaClass.getResourceAsStream("/Day7PuzzleInput.txt")
+        Assertions.assertEquals(1864, day7.solvePart2(testInputStream))
+    }
 }
