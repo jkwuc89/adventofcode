@@ -12,8 +12,14 @@ import java.io.InputStream
 
 class Day8 {
     private val utils = Utils()
-    fun runProgramAndReturnLargestRegisterValue(program: InputStream): Int {
+    /**
+     * Returns a Pair containing the following:
+     * Largest register value currently stored
+     * Maximum register value encountered while running the program
+     */
+    fun runProgramAndReturnLargestAndMaxRegisterValue(program: InputStream): Pair<Int, Int> {
         val instructions = utils.readTestInput(program)
+        var maxRegisterValue = 0
         val registers = HashMap<String, Int>()
         instructions.forEach{
             // Each instruction consists the following parts:
@@ -63,10 +69,11 @@ class Day8 {
                 } else {
                     registers[register] = currentRegisterValue - operationValue
                 }
+                maxRegisterValue = maxOf(maxRegisterValue, registers[register] ?: 0)
             }
         }
 
         // Return the largest register value
-        return registers.values.max() ?: 0
+        return Pair(registers.values.max() ?: 0, maxRegisterValue)
     }
 }
