@@ -9,39 +9,6 @@ package com.keithwedinger
  */
 
 /*
-func part1() -> Int {
-    var answer = 0
-    var garbage = false
-    var depth = 1
-    var prevChar: Character = " "
-
-    for currChar in input {
-
-        switch (prevChar, currChar, garbage) {
-        case ("!", "!", true):
-            prevChar = " "
-            continue
-        case ("!", _, true):
-            break
-        case (_, "<", false):
-            garbage = true
-        case (_, ">", true):
-            garbage = false
-        case (_, "{", false):
-            answer += depth
-            depth += 1
-        case (_, "}", false):
-            depth -= 1
-        default:
-            break
-        }
-
-        prevChar = currChar
-    }
-
-    return answer
-}
-
 func part2() -> Int {
     var answer = 0
     var garbage = false
@@ -86,8 +53,10 @@ class Day9 {
     fun getGroupScoreAndNonCanceledGarbage(stream: String): Pair<Int, Int> {
         val streamChars = stream.toCharArray()
         val streamState = StreamState(' ', ' ', false)
+        var canceledChar = false
         var depth = 1
         var score = 0
+        var garbageCount = 0
 
         streamChars.forEach { currChar ->
             streamState.currChar = currChar
@@ -103,10 +72,11 @@ class Day9 {
                     depth++
                 }
                 (streamState.currChar == '}' && !streamState.garbage) -> depth--
+                (streamState.prevChar != '!' && streamState.currChar != '!' && streamState.garbage) -> garbageCount++
             }
             streamState.prevChar = streamState.currChar
         }
 
-        return Pair(score, 0)
+        return Pair(score, garbageCount)
     }
 }
