@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
 /**
- * Tests for Day7
+ * Tests for Day8
  *
  * @author Keith Wedinger <br>
  * Created On: 12/14/17
