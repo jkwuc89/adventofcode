@@ -49,39 +49,6 @@ class Day7 {
     }
 
     /**
-     * Part 2
-     */
-    fun findProgramWithWrongWeight(programTowerInputStream: InputStream): Int {
-        val programTowerInput = programTowerInputStream.bufferedReader().use { it.readText() }
-
-        // Input regex, 1 = Node ID, 2 = Weight, 4 = Comma-delimited Children
-        val regex = """(\w+) \((\d+)\)( -> ([\w, ]+))?""".toRegex()
-        val programWeights = HashMap<String, Int>()
-        val programTowers = HashMap<String, List<String>>()
-
-        // Create maps of program weights and program towers
-        utils.readTestInput(programTowerInputStream).forEach {
-            val programFields = regex.matchEntire(it)!!.groups
-            val programName = programFields[1]!!.value
-            programWeights.put(programName, programFields[2]!!.value.toInt())
-            if (programFields[4] != null) {
-                programTowers.put(programName, programFields[4]!!.value.split(", "))
-            }
-        }
-
-        val programTowerWeights = HashMap<String, ArrayList<Int>>()
-        programTowers.forEach { currentTower ->
-            val weights = ArrayList<Int>()
-            currentTower.value.forEach { name ->
-                weights.add(programWeights[name]!!)
-            }
-            programTowerWeights.put(currentTower.key, weights)
-        }
-
-        return 0
-    }
-
-    /**
      * From Day 7 solutions thread on subreddit
      */
     fun solvePart1(programTowerInputStream: InputStream): String {

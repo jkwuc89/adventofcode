@@ -11,9 +11,19 @@ import org.junit.jupiter.api.Test
  */
 class Day10Test {
     private val day10 = Day10()
+
     @Test
     internal fun `getKnotHashPart1 with sample puzzle input`() {
         Assertions.assertEquals(12,
                 day10.getKnotHashPart1(arrayListOf(0, 1, 2, 3, 4), arrayListOf(3, 4, 1, 5)))
+    }
+
+    @Test
+    internal fun `getKnotHashPart1 with puzzle input`() {
+        val puzzleListInput = ArrayList<Int>()
+        puzzleListInput += 0..255
+        val puzzleLengthsInput = arrayListOf(230, 1, 2, 221, 97, 252, 168, 169, 57, 99, 0, 254, 181, 255, 235, 167)
+        Assertions.assertEquals(2928,
+                day10.getKnotHashPart1(puzzleListInput, puzzleLengthsInput))
     }
 }
