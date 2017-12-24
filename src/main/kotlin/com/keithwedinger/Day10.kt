@@ -9,9 +9,14 @@ package com.keithwedinger
  */
 
 class Day10 {
-    fun getKnotHashPart1(circularList: ArrayList<Int>, lengths: ArrayList<Int>) : Int {
-        var currentPosition = 0
-        var skipSize = 0
+    /**
+     * Rearrange the list as described in the day 10 puzzle
+     * @return Pair<Int, Int> containing current position and skip size after rearrange is complete
+     */
+    private fun rearrangeList(circularList: ArrayList<Int>, lengths: ArrayList<Int>,
+                              startingPosition: Int = 0, startingSkipSize: Int = 0): Pair<Int, Int> {
+        var currentPosition = startingPosition
+        var skipSize = startingSkipSize
         val validLengths = lengths.filter {
             it <= circularList.size
         }
@@ -51,7 +56,32 @@ class Day10 {
             }
             skipSize++
         }
+        return Pair(currentPosition, skipSize)
+    }
 
+    fun getKnotHashPart1(circularList: ArrayList<Int>, lengths: ArrayList<Int>): Int {
+        rearrangeList(circularList, lengths)
         return (circularList[0] * circularList[1])
+    }
+
+    fun getKnotHashPart2(circularList: ArrayList<Int>, lengths: ArrayList<Int>): Int {
+        // These are always added to the end to the lengths
+        val additionalPuzzleLengths = arrayListOf(17, 31, 73, 47, 23)
+
+        // Convert lengths to their ASCII representations
+        val asciiLengths = ArrayList<Int>()
+        lengths.mapTo(asciiLengths) {
+            it.toString().toCharArray()[0].toInt()
+        }
+        asciiLengths.addAll(additionalPuzzleLengths)
+
+        // Rearrange the list 64 times
+        var currentPositionAndSkipSize = Pair(0, 0)
+        for(i in 1..64) {
+            currentPositionAndSkipSize = rearrangeList(circularList, asciiLengths,
+                    currentPositionAndSkipSize.first, currentPositionAndSkipSize.second)
+        }
+
+        return 0
     }
 }
