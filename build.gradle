@@ -1,11 +1,11 @@
 buildscript {
     ext {
         apacheCommonsLang3Version = "3.7"
-        gradleVersion = "4.4"
+        gradleVersion = "4.4.1"
         junitPluginVersion = "1.0.2"
         junitVersion = "5.0.2"
         jvmVersion = "1.8"
-        kotlinVersion = "1.2.10"
+        kotlinVersion = "1.2.20"
     }
 
     repositories {
